@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> start
+    start --> test_request : cookies_found
+    test_request --> homescreen : ok
+    test_request --> cookie_invalid_warning : not_ok
+    cookie_invalid_warning --> cookie_save_prompt : continue
+    start --> cookie_save_prompt : cookies_not_found
+    cookie_save_prompt --> save_cookies : cookies_well_formed
+    save_cookies --> start : cookies_saved
+    cookie_save_prompt --> cookie_save_prompt : cookies_malformed
+    
